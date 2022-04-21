@@ -124,7 +124,6 @@ def init_cltcache():
     else:
         cltcache_path = pathlib.Path().home() / ".cltcache"
     cltcache_path.mkdir(parents=True, exist_ok=True)
-    print(cltcache_path)
     return cltcache_path
 
 
