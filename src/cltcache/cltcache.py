@@ -118,8 +118,13 @@ def compute_cache_key(clang_tidy_call):
 
 
 def init_cltcache():
-    cltcache_path = pathlib.Path().home() / ".cltcache"
+    cltcache_dir_string = os.getenv("CLTCACHE_DIR")
+    if cltcache_dir_string:
+        cltcache_path = pathlib.Path(cltcache_dir_string) / ".cltcache"
+    else:
+        cltcache_path = pathlib.Path().home() / ".cltcache"
     cltcache_path.mkdir(parents=True, exist_ok=True)
+    print(cltcache_path)
     return cltcache_path
 
 
